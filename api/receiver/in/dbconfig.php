@@ -1,8 +1,8 @@
 <?php
 
-define('DB_USER', "id10750264_garbagemonitoring"); 
-define('DB_PASSWORD', "123456789");
-define('DB_DATABASE', "id10750264_garbagemonitoring");
-define('DB_SERVER', "localhost");
+define('DB_USER', "database_username"); 
+define('DB_PASSWORD', "database_password");
+define('DB_DATABASE', "database_name");
+define('DB_SERVER', "host_name");
 
 ?>
