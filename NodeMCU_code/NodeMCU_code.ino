@@ -1,14 +1,14 @@
-#include<ESP8266WiFi.h>
-#include<Servo.h>
+#include <ESP8266WiFi.h>
+#include <Servo.h>
 
-#define trig_us D1  // Trigger pin for both ultrasonic sensor.
-#define echo_us1 D2 // Echo pin for 1st ultrasonic sensor.
-#define echo_us2 D3 // Echo pin for 2nd ultrasonic sensor.
+#define trig_us D1   // Trigger pin for both ultrasonic sensor.
+#define echo_us1 D2  // Echo pin for 1st ultrasonic sensor.
+#define echo_us2 D3  // Echo pin for 2nd ultrasonic sensor.
 #define motor_pin D4 // D4 or GPIO2 pin for Servo-motor control.
-#define RD_pin D5 // Raindrop sensor digital pin
-#define IR_pin D6 // IR sensor digital pin
+#define RD_pin D5    // Raindrop sensor digital pin
+#define IR_pin D6    // IR sensor digital pin
 
-Servo s;  // servo class object
+Servo s; // servo class object
 int RD_value = 0, IR_value = 0;
 int t1, d1, t2, d2;
 float drylevel, wetlevel;
@@ -22,20 +22,22 @@ const int httpPort = 80;
 
 WiFiClient client;
 
-void setup() {
+void setup()
+{
   Serial.begin(115200);
   pinMode(trig_us, OUTPUT);
   pinMode(echo_us1, INPUT);
   pinMode(echo_us2, INPUT);
   pinMode(RD_pin, INPUT); // RD sensor pin
   pinMode(IR_pin, INPUT); // IR sensor pin
-  s.attach(motor_pin);  // Servo motor
-  s.write(90);  // Setting Servo motor to 90 deg initially
+  s.attach(motor_pin);    // Servo motor
+  s.write(90);            // Setting Servo motor to 90 deg initially
 
   Serial.print("Connecting to ");
   Serial.print(ssid);
   WiFi.begin(ssid, pswd);
-  while (WiFi.status() != WL_CONNECTED) {
+  while (WiFi.status() != WL_CONNECTED)
+  {
     delay(500);
     Serial.print(".");
   }
@@ -49,11 +51,14 @@ void setup() {
   Serial.println();
 }
 
-void loop() {
-  if(runner%5 ==0) {
+void loop()
+{
+  if (runner % 5 == 0)
+  {
     detectWaste();
   }
-  if(runner%60 == 0) {
+  if (runner % 60 == 0)
+  {
     measuringSystem();
     uploadingValues();
     runner = 1;
@@ -62,32 +67,45 @@ void loop() {
   delay(1000);
 }
 
-void detectWaste() {
+void detectWaste()
+{
   IR_value = digitalRead(IR_pin);
-  if(IR_value == 0) {
+  if (IR_value == 0)
+  {
     Serial.println("No waste");
   }
-  else {
-    Serial.println("Waste detected.");
+  else
+  {
     RD_value = digitalRead(RD_pin);
-    if(RD_value == 1) { detected_dry(); }
-    else { detected_wet(); }
+    if (RD_value == 1)
+    {
+      Serial.println("Dry Waste detected.");
+      detected_dry();
+    }
+    else
+    {
+      Serial.println("Wet Waste detected.");
+      detected_wet();
+    }
   }
 }
 
-void detected_wet() {
+void detected_wet()
+{
   s.write(170);
   delay(300);
   s.write(90);
 }
 
-void detected_dry() {
+void detected_dry()
+{
   s.write(15);
   delay(300);
   s.write(90);
 }
 
-void measuringSystem() {
+void measuringSystem()
+{
   digitalWrite(trig_us, LOW);
   delayMicroseconds(3);
   digitalWrite(trig_us, HIGH);
@@ -108,23 +126,27 @@ void measuringSystem() {
   wetlevel = (h - d2) / h;
 }
 
-void uploadingValues() {
+void uploadingValues()
+{
   Serial.println("Connecting to host");
 
-  if (!client.connect(host, httpPort)) {
-      Serial.println("connection failed");
-      return;
+  if (!client.connect(host, httpPort))
+  {
+    Serial.println("connection failed");
+    return;
   }
 
-  if (d1 <= h && d2 <= h) {
+  if (d1 <= h && d2 <= h)
+  {
     String url = "/api/in/insert.php?drylevel=" + String(drylevel * 100) + "&wetlevel=" + String(wetlevel * 100);
     Serial.println("Requesting URL: ");
     Serial.print(url);
     client.print(String("GET ") + url + " HTTP/1.1\r\n" +
-                  "Host: " + host + "\r\n" +
-                  "Connection: close\r\n\r\n");
+                 "Host: " + host + "\r\n" +
+                 "Connection: close\r\n\r\n");
     delay(500);
-    while (client.available()) {
+    while (client.available())
+    {
       String line = client.readStringUntil('\r');
       Serial.print(line);
     }
