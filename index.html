@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="generator" content="Mobirise v4.10.8, mobirise.com">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-    <link rel="shortcut icon" href="assets/images/logo3.png" type="image/x-icon">
+    <link rel="shortcut icon" href="webpage/assets/images/logo3.png" type="image/x-icon">
     <meta name="description" content="">
 
     <title>Garbage Monitoring System</title>
@@ -20,8 +20,28 @@
     <link rel="stylesheet" href="webpage/assets/animatecss/animate.min.css">
     <link rel="stylesheet" href="webpage/assets/theme/css/style.css">
     <link rel="stylesheet" href="webpage/assets/mobirise/css/mbr-additional.css" type="text/css">
+    <style>
+        * {
+            box-sizing: border-box
+        }
 
+        .container {
+            width: 100%;
+            background-color: #ddd;
+        }
 
+        .skills {
+            text-align: right;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            color: white;
+        }
+
+        .html {
+            width: 90%;
+            background-color: #4CAF50;
+        }
+    </style>
 
 </head>
 
@@ -81,41 +101,17 @@
 
         <div class="container">
             <h2 class="mbr-section-title pb-3 align-center mbr-fonts-style display-2">Bin Levels</h2>
-
-            <div class="media-container-row pt-5 mt-2">
-                <div class="card p-3 align-center">
-                    <div class="wrap">
-                        <div class="pie_progress progress1" role="progressbar" data-goal="60">
-                            <p class="pie_progress__number mbr-fonts-style display-5"></p>
-                        </div>
-                    </div>
-                    <div class="mbr-crt-title pt-3">
-                        <h4 class="card-title py-2 mbr-fonts-style display-5">
-                            Dry Waste Bin</h4>
-                    </div>
+            <div onload="aka()" class="container">
+                <p>HTML</p>
+                <div class="container">
+                    <div class="skills html">90%</div>
                 </div>
 
-                <div class="card p-3 align-center">
-                    <div class="wrap">
-                        <div class="pie_progress progress2" role="progressbar" data-goal="38">
-                            <p class="pie_progress__number mbr-fonts-style display-5"></p>
-                        </div>
-                    </div>
-                    <div class="mbr-crt-title pt-3">
-                        <h4 class="card-title py-2 mbr-fonts-style display-5">
-                            Wet Waste Bin</h4>
-                    </div>
+                <p>HTML</p>
+                <div class="container">
+                    <div class="skills html" id="dryy">90%</div>
                 </div>
-
-
-
-
-
-
-
-
             </div>
-        </div>
     </section>
 
     <script src="webpage/assets/web/assets/jquery/jquery.min.js"></script>
@@ -129,7 +125,7 @@
     <script src="webpage/assets/dropdown/js/navbar-dropdown.js"></script>
     <script src="webpage/assets/touchswipe/jquery.touch-swipe.min.js"></script>
     <script src="webpage/assets/theme/js/script.js"></script>
-
+    <script src="updater.js"></script>
 
     <div id="scrollToTop" class="scrollToTop mbr-arrow-up"><a style="text-align: center;"><i
                 class="mbr-arrow-up-icon mbr-arrow-up-icon-cm cm-icon cm-icon-smallarrow-up"></i></a></div>
