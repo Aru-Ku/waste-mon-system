@@ -1,4 +1,5 @@
 var url = 'https://iotgarbagemonitoringsystem.000webhostapp.com/api/in/specific.php';
+var timer = 0;
 
 function Get(url) {
     var Httpreq = new XMLHttpRequest();
@@ -17,12 +18,3 @@ function fun() {
     document.getElementById("dry-bar-level").innerHTML = dry + " %";
     document.getElementById("wet-bar-level").innerHTML = wet + " %";
 }
-
-$(document).ready(
-    function () {
-        setInterval(function () {
-            var someval = Math.floor(Math.random() * 100);
-            $('#display');
-        }, 5000);
-    }
-);
