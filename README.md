@@ -46,6 +46,3 @@ The waste segregator, segregates the waste into two major classes: dry and wet. 
 > * Add token, ssid, password and host to [NodeMCU code](NodeMCU_code/NodeMCU_code.ino)
 > * Update host address in [script.js](script.js)
 
-### Credits
-
-ArunKumar N
