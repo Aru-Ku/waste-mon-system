@@ -43,7 +43,7 @@ The waste segregator, segregates the waste into two major classes: dry and wet. 
 > **For implenting this project**
 >
 > * Add database credentials in [dbconfig.php](api/dbconfig.php)
-> * Add token, ssid, password and host to [NodeMCU code](NodeMCU_code/> NodeMCU_code.ino)
+> * Add token, ssid, password and host to [NodeMCU code](NodeMCU_code/NodeMCU_code.ino)
 > * Update host address in [script.js](script.js)
 
 ### Credits
