@@ -1,4 +1,4 @@
-var url = 'https://iotgarbagemonitoringsystem.000webhostapp.com/api/in/specific.php';
+var url = 'https://HOST-ADDRESS.000webhostapp.com/api/in/specific.php';
 var timer = 0;
 
 function Get(url) {

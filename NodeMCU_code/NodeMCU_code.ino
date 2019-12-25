@@ -18,10 +18,10 @@ float h = 20.0; // Height of Bins
 int runner = 0; // Variable for selecting Segregation & Uploading functions
 int time1 = 0; //for using as time
 
-char auth[] = "wDRwOrxxWgDHMFAZTDQivO06grpgBQdn";
-const char *ssid = "ak"; // WiFi Name (SSID)
-const char *pswd = "ak123456789"; // WiFi Password
-const char *host = "iotgarbagemonitoringsystem.000webhostapp.com"; // Webpage (host) to display Bin Levels
+char auth[] = "BLYNK-TOKEN";
+const char *ssid = "SSID-NAME"; // WiFi Name (SSID)
+const char *pswd = "SSID-PASSWORD"; // WiFi Password
+const char *host = "WEB-HOST-ADDRESS.000webhostapp.com"; // Webpage (host) to display Bin Levels
 const int httpPort = 80; // Host port
 
 WiFiClient client; 
